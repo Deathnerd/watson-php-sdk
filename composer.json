@@ -1,5 +1,5 @@
 {
-  "name": "deathnerd/watson-php-sdk",
+  "name": "deathnerd/watson-sdk",
   "description": "The PHP version of the Watson API SDK",
   "minimum-stability": "dev",
   "license": "apache 2.0",
