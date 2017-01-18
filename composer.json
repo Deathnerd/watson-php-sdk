@@ -1,0 +1,29 @@
+{
+  "name": "deathnerd/watson-php-sdk",
+  "description": "The PHP version of the Watson API SDK",
+  "minimum-stability": "dev",
+  "license": "apache 2.0",
+  "authors": [
+    {
+      "name": "Wes Gilleland",
+      "email": "wes.gilleland@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Watson\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Watson\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=5.6",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.7.*"
+  }
+}
