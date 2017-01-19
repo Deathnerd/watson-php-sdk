@@ -162,4 +162,28 @@ final class CredentialUtils
 
         return null;
     }
+
+    /**
+     * Returns the URL for the given service or `null` if not found.
+     *
+     * @param string $service_name The service name
+     * @param string $plan         THe service plan: standard, free, or experimental
+     *
+     * @return string|null The API URL or `null` if it wasn't found in the `VCAP_SERVICES`
+     */
+    public static function getAPIUrl($service_name, $plan = "")
+    {
+        if (!$service_name) {
+            return null;
+        }
+
+        $services = self::getVCAPServices();
+        if (!$services) {
+            return null;
+        }
+
+        $credentials = self::getCredentialsObject($services, $service_name, $plan);
+
+        return Arr::get($credentials, static::URL, null);
+    }
 }
