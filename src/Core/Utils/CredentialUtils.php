@@ -13,7 +13,7 @@ use Composer\Json\JsonValidationException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-class CredentialUtils
+final class CredentialUtils
 {
     const ALCHEMY_API = "alchemy_api";
     const APIKEY = "apikey";
