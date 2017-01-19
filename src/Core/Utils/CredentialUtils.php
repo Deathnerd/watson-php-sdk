@@ -94,7 +94,7 @@ final class CredentialUtils
             // Other API keys
             $credentials = static::getUserNameAndPassword($service_name, $plan);
             if ($credentials) {
-                return "Basic " . base64_encode($credentials->getUsername() . ":" . $credentials->getPassword());
+                return static::basic($credentials->getUsername(), $credentials->getPassword());
             }
         }
 
@@ -185,5 +185,17 @@ final class CredentialUtils
         $credentials = self::getCredentialsObject($services, $service_name, $plan);
 
         return Arr::get($credentials, static::URL, null);
+    }
+
+    /**
+     * Creates a basic HTTP Auth string given a username and a password
+     * @param string $username The username
+     * @param string $password The password
+     *
+     * @return string The basic HTTP auth string
+     */
+    public static function basic($username, $password)
+    {
+        return "Basic " . base64_encode($username . ":" . $password);
     }
 }
