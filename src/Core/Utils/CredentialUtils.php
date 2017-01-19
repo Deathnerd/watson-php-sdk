@@ -30,6 +30,11 @@ final class CredentialUtils
      */
     private static $services;
 
+    /** No instantiation of the CredentialUtils, please. Thank you! */
+    private function __construct()
+    {
+    }
+
     /**
      * Gets the `VCAP_SERVICES` environment variable and returns it as an array.
      * @return array The decoded `VCAP_SERVICES` environment JSON
@@ -88,6 +93,9 @@ final class CredentialUtils
         } else {
             // Other API keys
             $credentials = static::getUserNameAndPassword($service_name, $plan);
+            if ($credentials) {
+                return "Basic " . base64_encode($credentials->getUsername() . ":" . $credentials->getPassword());
+            }
         }
 
         return null;
